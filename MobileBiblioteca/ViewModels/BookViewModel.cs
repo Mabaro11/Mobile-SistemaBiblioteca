@@ -17,8 +17,8 @@ namespace MobileBiblioteca.ViewModels
         private Book _selectedBook;
         public ObservableCollection<Book> Books { get; }
         public Command LoadBooksCommand { get; }
-        public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
+        public Command AddBookCommand { get; }
+        public Command<Book> BookTapped { get; }
 
         public BookViewModel()
         {
@@ -26,9 +26,9 @@ namespace MobileBiblioteca.ViewModels
             Books = new ObservableCollection<Book>();
             LoadBooksCommand = new Command(async () => await ExecuteLoadBooksCommand());
 
-            //ItemTapped = new Command<Item>(OnItemSelected);
+            BookTapped = new Command<Book>(OnBookSelected);
 
-            //AddItemCommand = new Command(OnAddItem);
+            //AddBookCommand = new Command(OnAddItem);
         }
 
         async Task ExecuteLoadBooksCommand()
@@ -39,7 +39,7 @@ namespace MobileBiblioteca.ViewModels
             {
                 Books.Clear();
 
-                var url = "http://192.168.1.18:5000/api/book";
+                var url = "http://192.168.1.3:5000/api/book";
                 var servicio = new RestHelper<List<Book>>();
                 var books = await servicio.GetRestServiceDataAsync(url);
 
@@ -72,11 +72,11 @@ namespace MobileBiblioteca.ViewModels
             set
             {
                 SetProperty(ref _selectedBook, value);
-                OnItemSelected(value);
+                OnBookSelected(value);
             }
         }
 
-        async void OnItemSelected(Book book)
+        async void OnBookSelected(Book book)
         {
             if (book == null)
                 return;
