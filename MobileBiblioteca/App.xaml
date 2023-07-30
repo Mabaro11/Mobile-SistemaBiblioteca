@@ -27,6 +27,99 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-        </ResourceDictionary>        
+
+            <Color x:Key="BackgroundColor">#FFFFFF</Color>
+            <Color x:Key="LightBackgroundColor">#292828</Color>
+            <Color x:Key="ForegroundTextColor">Black</Color>
+            <Color x:Key="SubtitleTextColor">#292828</Color>
+            <Color x:Key="AccentColor">#FF910A</Color>
+            <Color x:Key="LightAccentColor">#FFC57E</Color>
+            <Color x:Key="PageFadeColor">#AA000000</Color>
+            <Color x:Key="HighlightGradientStart">#ffca8a</Color>
+            <Color x:Key="HighlightGradientEnd">#ffba67</Color>
+            <Color x:Key="NonHighlightGradientStart">#ffad4a</Color>
+            <Color x:Key="NonHighlightGradientEnd">#ff9d24</Color>
+
+
+
+
+            <OnPlatform x:Key="TitleFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Old Standard TT" />
+                <On Platform="Android" Value="OldStandard-Bold.ttf#Old Standard TT" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="BodyFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Questrial" />
+                <On Platform="Android" Value="Questrial-Regular.ttf#Questrial" />
+            </OnPlatform>
+
+
+
+
+
+            <Style x:Key="stlContactBtn" TargetType="Button">
+                <Setter Property="TranslationY"     Value="-50"/>
+                <Setter Property="TranslationX"     Value="45"/>
+                <Setter Property="BackgroundColor"  Value="#2193f3"/>
+                <Setter Property="WidthRequest"     Value="56"/>
+                <Setter Property="HeightRequest"    Value="56"/>
+                <Setter Property="CornerRadius"     Value="28"/>
+            </Style>
+
+            <Style x:Key="stlBoardTitle" TargetType="Label">
+                <Setter Property="Padding"           Value="0,30,0,5"/>
+                <Setter Property="TextColor"         Value="#a5a2a2"/>
+                <Setter Property="FontSize"          Value="16"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="stlBoardDesc" TargetType="Label">
+                <Setter Property="FontAttributes"    Value="Bold"/>
+                <Setter Property="FontSize"          Value="16" />
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="stlMainFrame" TargetType="Frame">
+                <Setter Property="TranslationY"    Value="{OnPlatform iOS='-150', Android='-33'}"/>
+                <Setter Property="HeightRequest"   Value="{OnPlatform iOS='120', Android='250'}"/>
+                <Setter Property="HasShadow"       Value="False" />
+            </Style>
+
+
+
+
+
+
+
+            <!--Fuentes-->
+
+
+
+            <Style TargetType="Grid">
+                <Setter Property="RowSpacing" Value="0" />
+                <Setter Property="ColumnSpacing" Value="0" />
+            </Style>
+
+            <Style x:Key="TitleText" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ForegroundTextColor}" />
+                <Setter Property="FontSize" Value="30" />
+            </Style>
+
+            <Style x:Key="SubtitleText" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource SubtitleTextColor}" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+
+            <Style x:Key="BodyText" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ForegroundTextColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+
+            <x:Double x:Key="LinkImageSize">50</x:Double>
+            <x:Double x:Key="LinkImageCornerSize">25</x:Double>
+
+
+
+    </ResourceDictionary>        
     </Application.Resources>
 </Application>

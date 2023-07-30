@@ -11,8 +11,13 @@ namespace MobileBiblioteca
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+
+            Routing.RegisterRoute(nameof(BookDetailPage), typeof(BookDetailPage));
+            Routing.RegisterRoute(nameof(NewBookPage), typeof(NewBookPage));
+
+            Routing.RegisterRoute(nameof(ReaderDetailPage), typeof(ReaderDetailPage));
+            Routing.RegisterRoute(nameof(NewReaderPage), typeof(NewReaderPage));
+
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

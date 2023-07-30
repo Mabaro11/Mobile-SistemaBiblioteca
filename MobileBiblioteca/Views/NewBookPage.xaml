@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MobileBiblioteca.ViewModels"
+             Title="{Binding Title}"
+             x:Class="MobileBiblioteca.Views.NewBookPage">
+
+    <ContentPage.BindingContext>
+        <vm:NewBookViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <StackLayout Spacing="3" Padding="15">
+
+        <Label Text="Titulo" FontSize="Medium" />
+        <Entry Text="{Binding BookTitle}" FontSize="Medium"/>
+        
+        <Label Text="Descripcion" FontSize="Medium" />
+        <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+        
+        <Label Text="Editorial" FontSize="Medium" />
+        <Editor Text="{Binding Editorial, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+        
+        <Label Text="Autor" FontSize="Medium" />
+        <Editor Text="{Binding Author, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+        <Label Text="Categoria" FontSize="Medium" />
+        <Picker x:Name="pickerCategory" 
+        ItemsSource="{Binding Categories}"
+        ItemDisplayBinding="{Binding name}"
+        SelectedItem="{Binding SelectedCategory}"/>
+
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+            <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
+        
+    </StackLayout>
+</ContentPage>

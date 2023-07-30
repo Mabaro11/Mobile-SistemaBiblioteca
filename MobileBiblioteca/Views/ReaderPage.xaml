@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:model="clr-namespace:MobileBiblioteca.Models" 
+             xmlns:vm="clr-namespace:MobileBiblioteca.ViewModels"
+             x:Class="MobileBiblioteca.Views.ReaderPage"
+             Title="{Binding Title}"
+             >
+    
+    <ContentPage.BindingContext>
+        <vm:ReaderViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Nuevo" Command="{Binding AddReaderCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+
+        <StackLayout>
+            <SearchBar Text="{Binding SearchText}"  />
+            <RefreshView x:DataType="vm:ReaderViewModel" Command="{Binding RefreshReaderCommand}" IsRefreshing="{ Binding IsBusy, Mode=TwoWay}"  >
+                <CollectionView x:Name="ReaderListView"
+                    ItemsSource="{Binding Readers}"
+                    SelectionMode="None" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems Mode="Reveal">
+                                        <SwipeItem Text="Delete" 
+                                           BackgroundColor="Red"
+                                           Invoked="SwipeItem_Invoked"
+                                           CommandParameter="{Binding Source={RelativeSource Self}, Path=BindingContext}"
+                                           />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <StackLayout Padding="10" x:DataType="model:Reader">
+                                    <Label Text="{Binding name}" 
+                                        LineBreakMode="NoWrap" 
+                                        Style="{DynamicResource ListItemTextStyle}" 
+                                        FontSize="16" />
+                                    <Label Text="{Binding email}" 
+                                        LineBreakMode="NoWrap"
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="13" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            NumberOfTapsRequired="1"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ReaderViewModel}}, Path=ReaderTapped}"		
+                                            CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+
+                                </StackLayout>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

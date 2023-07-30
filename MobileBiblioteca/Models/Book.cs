@@ -14,5 +14,6 @@ namespace MobileBiblioteca.Models
         public int categoryID { get; set; }
         public object category { get; set; }
         public int quantity { get; set; }
+
     }
 }

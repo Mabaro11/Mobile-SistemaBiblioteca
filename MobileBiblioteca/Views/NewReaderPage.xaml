@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:MobileBiblioteca.ViewModels"
+             x:Class="MobileBiblioteca.Views.NewReaderPage"
+             Title="{Binding Title}"
+             >
+
+    <ContentPage.BindingContext>
+        <vm:NewReaderViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Spacing="3" Padding="15">
+
+        <Label Text="Nombre" FontSize="Medium" />
+        <Entry Text="{Binding Name}" FontSize="Medium"/>
+
+        <Label Text="DNI" FontSize="Medium" />
+        <Editor Text="{Binding Dni, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+        <Label Text="Direccion" FontSize="Medium" />
+        <Editor Text="{Binding Address, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+        <Label Text="Email" FontSize="Medium" />
+        <Editor Text="{Binding Email, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+        <Label Text="Telefono" FontSize="Medium" />
+        <Editor Text="{Binding Phone, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+
+        
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+            <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+        </StackLayout>
+
+    </StackLayout>
+    
+</ContentPage>

@@ -1,18 +1,53 @@
-﻿using System;
-using System.Windows.Input;
+﻿using MobileBiblioteca.Models;
+using MobileBiblioteca.Services;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace MobileBiblioteca.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
-        public AboutViewModel()
+        string urlBase = ((App)App.Current).UrlBase + "/api/";
+
+        private QuantityResponse _bookQuantity;
+        public QuantityResponse BookQuantity
         {
-            Title = "Home";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+            get => _bookQuantity;
+            set => SetProperty(ref _bookQuantity, value);
         }
 
-        public ICommand OpenWebCommand { get; }
+        private QuantityResponse _readerQuantity;
+        public QuantityResponse ReaderQuantity
+        {
+            get => _readerQuantity;
+            set => SetProperty(ref _readerQuantity, value);
+        }
+
+
+        public AboutViewModel()
+        {
+            Title = "Inicio";
+            Task.Run(async () => await ExecuteLoadQuantity());
+        }
+
+        async Task ExecuteLoadQuantity()
+        {
+            try
+            {
+                var current = Connectivity.NetworkAccess;
+                if (current == NetworkAccess.Internet)
+                {
+                    var servicio = new RestHelper<QuantityResponse>();
+                    BookQuantity = await servicio.GetRestServiceDataAsync(this.urlBase + "book/quantity");
+                    ReaderQuantity = await servicio.GetRestServiceDataAsync(this.urlBase + "reader/quantity");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+        }
     }
 }

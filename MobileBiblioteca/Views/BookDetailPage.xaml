@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileBiblioteca.Views.BookDetailPage" 
+             xmlns:vm="clr-namespace:MobileBiblioteca.ViewModels"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             Title="{Binding Title}"
+             >
+    <ContentPage.BindingContext>
+        <vm:BookDetailViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="UPDATE" 
+                     IconImageSource="edit.png" 
+                     Command="{Binding UpdateBookCommand}"		
+                     />
+
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0">
+            <StackLayout>
+                <ContentView Padding="20,40">
+                    <StackLayout>
+                        <Label Style="{StaticResource TitleText}" Text="{Binding Book.title}" />
+                        <Label Style="{StaticResource BodyText}" Text="{Binding Book.description}" />
+                        <StackLayout Padding="0,10,0,0" Orientation="Horizontal">
+                            <Label Style="{StaticResource SubtitleText}" Text="Editorial:"  />
+                            <Label Style="{StaticResource SubtitleText}" Text="{Binding Book.editorial}"  />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Style="{StaticResource SubtitleText}" Text="Categoria:" />
+                            <Label Style="{StaticResource SubtitleText}" Text="{Binding Category.name}" />
+                        </StackLayout>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="AUTO" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="80" />
+                            </Grid.RowDefinitions>
+
+
+                            <BoxView
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="{StaticResource LightBackgroundColor}"
+                                HeightRequest="1"
+                                VerticalOptions="End" />
+
+                            <BoxView
+                                Grid.Row="1"
+                                BackgroundColor="AntiqueWhite"
+                                CornerRadius="{StaticResource LinkImageCornerSize}"
+                                HeightRequest="{StaticResource LinkImageSize}"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="{StaticResource LinkImageSize}" />
+
+                            <Image
+                                Grid.Row="1"
+                                HeightRequest="30"
+                                HorizontalOptions="Center"
+                                Source="readers.png"
+                                VerticalOptions="Center"
+                                WidthRequest="30" />
+
+                            <StackLayout
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="20,0,0,0"
+                                VerticalOptions="Center"
+                                Orientation="Horizontal">
+                                <Label Style="{StaticResource BodyText}" Text="Autor:" />
+                                <Label Style="{StaticResource BodyText}" Text="{Binding Book.author}" />
+                            </StackLayout>
+
+                        </Grid>
+                    </StackLayout>
+                </ContentView>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
+    

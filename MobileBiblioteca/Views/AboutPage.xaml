@@ -13,7 +13,7 @@
     <!-- Main layout structure-->
     <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,*">
 
-        <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Source="portada.png" VerticalOptions="Start" Aspect="AspectFit" HeightRequest="{OnPlatform Android='300', iOS='420'}"/>
+        <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Source="portada.png" VerticalOptions="Start" Aspect="AspectFit" HeightRequest="{OnPlatform Android='250', iOS='420'}"/>
         <!-- Frame to achieve the gradient over the image-->
         <Frame Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"  HasShadow="False">
             <Frame.Background>
@@ -27,7 +27,7 @@
 
         <!-- 2. Description -->
 
-        <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="Sistema de &#10;biblioteca" Margin="25,-10,0,0" CharacterSpacing="2" FontAttributes="Bold" TextColor="#353f5f" FontSize="40"/>
+        <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Text="Sistema de biblioteca" Margin="25,10,0,0" CharacterSpacing="2" FontAttributes="Bold" TextColor="#353f5f" FontSize="40"/>
 
         <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="Gestion de lectores y libros mobile."  FontSize="20" TextColor="#9196a6" Margin="25,20,0,35"/>
 
@@ -35,7 +35,8 @@
             <Label TextColor="White" VerticalTextAlignment="Center">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="100+&#10;" FontAttributes="Bold" FontSize="33"/>
+                        <Span Text="{Binding BookQuantity.quantity}" FontAttributes="Bold" FontSize="33"/>
+                        <Span Text="&#10;"/>
                         <Span Text="Libros disponibles" FontSize="20"/>
                     </FormattedString>
                 </Label.FormattedText>
@@ -45,7 +46,8 @@
             <Label TextColor="White" VerticalTextAlignment="Center">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="22&#10;" FontAttributes="Bold" FontSize="33"/>
+                        <Span Text="{Binding ReaderQuantity.quantity}" FontAttributes="Bold" FontSize="33"/>
+                        <Span Text="&#10;"/>
                         <Span Text="Lectores registrados" FontSize="20"/>
                     </FormattedString>
                 </Label.FormattedText>
@@ -54,45 +56,4 @@
 
     </Grid>
     
-    
-    <!-- Here add the code that is being explained in the next block
-
-
-
-
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="portada.png" HorizontalOptions="CenterAndExpand" HeightRequest="100" />
-                </ContentView>
-            </StackLayout>
-        </StackLayout>
-        <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Text="Start developing now" FontSize="Title"/>
-                <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="0,0,0,0"/>
-                <Label FontSize="16" Padding="0,24,0,0">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Learn more at "/>
-                                <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-                <Button Margin="0,10,0,0" Text="Learn more"
-                        Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
-            </StackLayout>
-        </ScrollView>
-    </Grid>
--->
 </ContentPage>

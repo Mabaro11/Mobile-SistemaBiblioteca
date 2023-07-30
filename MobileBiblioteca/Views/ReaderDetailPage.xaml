@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:MobileBiblioteca.ViewModels"
+             x:Class="MobileBiblioteca.Views.ReaderDetailPage"
+             Title="{Binding Title}"
+             >
+
+    <ContentPage.BindingContext>
+        <vm:ReaderDetailViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="UPDATE" 
+                     IconImageSource="edit.png" 
+                     Command="{Binding UpdateReaderCommand}"		
+                     />
+
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+        <!-- 1. Profile picture-->
+        <StackLayout Padding="40">
+            <Frame CornerRadius="100" 
+           HeightRequest="100"
+           WidthRequest="100"
+           HorizontalOptions="Center"
+           Padding="0"
+           IsClippedToBounds="True">
+                <Label Text="{Binding FirstLetterName}" 
+                       BackgroundColor="{StaticResource Primary}" 
+                       TextColor="White"
+                       FontSize="50" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center">
+                </Label>
+            </Frame>
+        </StackLayout>
+
+        <!-- 2. Contact informaqtion frame-->
+        <StackLayout BackgroundColor="White" Padding="0,40" >
+            <Frame CornerRadius="40" Style="{StaticResource stlMainFrame}" >
+                <!-- Blocks: 3 and 4 -->
+                <Grid Padding="25,10,25,0" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <!-- 3. Phone & message buttons-->
+
+                    <!-- 4. Contact information-->
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Reader.name}" FontAttributes="Bold" FontSize="30"/>
+                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Reader.id}" TextColor="#a5a2a2" FontSize="16"/>
+                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Email: " FontAttributes="Bold" />
+                                <Span Text="{Binding Reader.email}"  />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Telefono: " FontAttributes="Bold" />
+                                <Span Text="{Binding Reader.phone}"  />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Direccion: " FontAttributes="Bold" />
+                                <Span Text="{Binding Reader.address}"  />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Padding="0,10,0,0" FontSize="16">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="DNI: " FontAttributes="Bold" />
+                                <Span Text="{Binding Reader.dni}"  />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+
+       
+
+</ContentPage>
