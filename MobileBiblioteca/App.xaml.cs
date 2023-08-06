@@ -17,7 +17,7 @@ namespace MobileBiblioteca
 
             MainPage = new AppShell();
 
-            UrlBase = "http://192.168.1.3:5000";
+            UrlBase = "http://mabaro.duckdns.org:5000";
         }
 
         protected override void OnStart()
